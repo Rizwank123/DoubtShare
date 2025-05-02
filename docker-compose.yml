@@ -1,0 +1,47 @@
+version: '3.8'  # Specify the Docker Compose file version
+
+services:
+  spring-boot-app:
+    build:
+      context: .  # Use the current directory as the build context
+      dockerfile: Dockerfile  # Specify the Dockerfile to use
+    ports:
+      - "8080:8080"  # Map port 8080 of the container to port 8080 on the host
+    environment:
+      SPRING_PROFILES_ACTIVE: dev  # Example environment variable (optional)
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydb  # PostgreSQL connection URL
+      SPRING_MONGODB_URI: mongodb://mongo:27017/mydb  # MongoDB connection URL
+      POSTGRES_USER: user  # PostgreSQL username
+      POSTGRES_PASSWORD: password  # PostgreSQL password
+      MONGO_INITDB_ROOT_USERNAME: mongoUser   # MongoDB username
+      MONGO_INITDB_ROOT_PASSWORD: mongoPassword  # MongoDB password
+    depends_on:
+      - postgres  # Ensure PostgreSQL starts before the Spring Boot app
+      - mongo  # Ensure MongoDB starts before the Spring Boot app
+    networks:
+      - app-network  # Connect to a custom network
+
+  postgres:
+    image: postgres:latest  # Use the latest PostgreSQL image
+    environment:
+      POSTGRES_DB: mydb  # Database name
+      POSTGRES_USER: ${POSTGRES_USER}  # Use environment variable for username
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}  # Use environment variable for password
+    ports:
+      - "5432:5432"  # Map PostgreSQL port
+    networks:
+      - app-network  # Connect to the same network
+
+  mongo:
+    image: mongo:latest  # Use the latest MongoDB image
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}  # Use environment variable for username
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}  # Use environment variable for password
+    ports:
+      - "27017:27017"  # Map MongoDB port
+    networks:
+      - app-network  # Connect to the same network
+
+networks:
+  app-network:
+    driver: bridge  # Use the default bridge network
