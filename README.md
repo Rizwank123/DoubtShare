@@ -38,4 +38,4 @@ DoubtShare is a Spring Boot application that provides a platform for students to
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Rizwank123/DoubtShare.git
