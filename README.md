@@ -2,6 +2,10 @@
 
 DoubtShare is a Spring Boot application that provides a platform for students to connect with tutors and get their doubts resolved in real-time.
 
+## API Documentation
+
+![API Documentation](api.gif)
+
 ## Technologies Used
 
 - Java 21
