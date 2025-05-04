@@ -27,7 +27,6 @@ import com.doubtshare.security.UserDetailsImpl;
 import com.doubtshare.service.DoubtService;
 
 import jakarta.transaction.Transactional;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 @Service
 @Log4j2

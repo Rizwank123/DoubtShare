@@ -5,11 +5,9 @@ import com.doubtshare.dto.LoginResponse;
 import com.doubtshare.dto.RegisterRequest;
 import com.doubtshare.dto.UserDTO;
 import com.doubtshare.entity.User;
-import com.doubtshare.security.UserDetailsImpl;
 import com.doubtshare.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,6 +40,7 @@ public class AuthController {
 		UserDTO userDto = UserDTO.builder()
 				.id(user.getId())
 				.email(user.getEmail())
+				.fullName(user.getFullName())
 				.userType(user.getUserType())
 				.username(user.getUsername())
 				.language(user.getLanguage())

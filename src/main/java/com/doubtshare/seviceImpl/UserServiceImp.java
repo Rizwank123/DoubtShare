@@ -69,6 +69,7 @@ public class UserServiceImp implements UserService {
 		UserDTO usr = UserDTO.builder()
 						.email(user.getEmail())
 						.username(user.getUsername())
+						.fullName(user.getFullName())
 						.language(user.getLanguage())
 						.classGrade(user.getClassGrade())
 						.userType(user.getUserType())
