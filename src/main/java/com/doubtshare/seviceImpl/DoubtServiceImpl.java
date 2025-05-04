@@ -229,4 +229,18 @@ public class DoubtServiceImpl implements DoubtService {
         return dto;
 	}
 
+	@Override
+	public Page<DoubtRequestDTO> getAllDoubts(int page, int size) {
+		// Create a pageable with sorting by created time (descending)
+		Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+
+		// Find all the doubts
+		Page<DoubtRequest> doubtRequests = doubtRequestRepository.findAll(pageable);
+
+		// Convert each doubt request to DTO
+		Page<DoubtRequestDTO> dtoPage = doubtRequests.map(this::convertToDTO);
+
+		return dtoPage;
+	}
+
 }

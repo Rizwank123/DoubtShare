@@ -15,6 +15,7 @@ import java.util.UUID;
 @Builder
 public class UserDTO {
     private UUID id;
+    private String fullName;
     private String username;
     private String email;
     private User.UserType userType;

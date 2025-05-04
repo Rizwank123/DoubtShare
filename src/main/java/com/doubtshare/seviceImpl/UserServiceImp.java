@@ -34,6 +34,7 @@ public class UserServiceImp implements UserService {
 						.email(request.getEmail())
 						.password(passwordEncoder.encode(request.getPassword()))
 						.username(request.getUsername())
+						.fullName(request.getFullName())
 						.language(request.getLanguage())
 						.classGrade(request.getClassGrade())
 						.userType(request.getUserType())

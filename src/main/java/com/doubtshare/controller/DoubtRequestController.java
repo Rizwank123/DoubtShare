@@ -52,4 +52,9 @@ public class DoubtRequestController {
         return ResponseEntity.ok(doubtService.getDoubtHistory(studentId, page, size));
 	
 	}
+	@GetMapping("/")
+	public ResponseEntity<Page<DoubtRequestDTO>> getAllDoubts(@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size) {
+		return ResponseEntity.ok(doubtService.getAllDoubts(page, size));
+	}
 }
