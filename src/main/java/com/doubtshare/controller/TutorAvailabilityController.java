@@ -61,6 +61,12 @@ public class TutorAvailabilityController {
 				.id(tutor.getId())
 				.email(tutor.getEmail())
 				.userType(tutor.getUserType())
+				.username(tutor.getUsername())
+				.fullName(tutor.getFullName())
+				.language(tutor.getLanguage())
+				.classGrade(tutor.getClassGrade())
+				.subjectExpertise(tutor.getSubjectExpertise())
+				.teachingGrades(tutor.getTeachingGrades())
 				.build();
         // Update tutor's availability status
         tutorAvailabilityService.setAvailabilityStatus(user, isAvailable);

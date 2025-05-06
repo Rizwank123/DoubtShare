@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -20,4 +21,7 @@ public interface TutorAvailabilityRepository extends JpaRepository<TutorAvailabi
     long countOnlineTutors(@Param("cutoffTime") LocalDateTime cutoffTime);
     
     List<TutorAvailability> findByTutorIdIn(List<UUID> tutorIds);
+    
+    @Query("SELECT ta FROM TutorAvailability ta WHERE ta.tutor.id = :tutorId")
+    Optional<TutorAvailability> findByTutorId(@Param("tutorId") UUID tutorId);
 }
