@@ -154,7 +154,14 @@ export const tutorService = {
   },
 
   getOnlineCount: async (): Promise<number> => {
-    const response = await fetch(`${API_URL}/tutor-availability/online-count`);
+    const token = getToken();
+    const response = await fetch(`${API_URL}/tutor-availability/online-count`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
     return handleResponse(response);
   }
 };

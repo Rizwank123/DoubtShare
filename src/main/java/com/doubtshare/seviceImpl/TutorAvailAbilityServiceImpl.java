@@ -47,14 +47,14 @@ public class TutorAvailAbilityServiceImpl implements TutorAvailabilityService {
             
             tutorAvailability.setLastPingTime(LocalDateTime.now().plusMinutes(3));
             tutorAvailabilityRepository.save(tutorAvailability);
-            LoggerEntity loggerEntity = LoggerEntity.builder()
-                    .action("Ping")
-                    .timestamp(LocalDateTime.now().toString())
-                    .details("Tutor pinged to update availability")
-                    .status("Success")
-                    .errorMessage(null)
-                    .build();
-                    loggerRepository.save(loggerEntity);
+//            LoggerEntity loggerEntity = LoggerEntity.builder()
+//                    .action("Ping")
+//                    .timestamp(LocalDateTime.now().toString())
+//                    .details("Tutor pinged to update availability")
+//                    .status("Success")
+//                    .errorMessage(null)
+//                    .build();
+//                    loggerRepository.save(loggerEntity);
         
 		}
 
